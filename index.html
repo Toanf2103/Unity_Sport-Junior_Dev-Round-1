@@ -39,25 +39,11 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="./challenge1.js"></script>
+    <script src="./challenge2.js"></script>
     <script>
         // Palindrome Checker
-        function isPalindrome(str) {
-            let left = 0;
-            let right = str.length - 1;
-
-            str = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-
-            while (left < right) {
-                if (str[left] !== str[right]) {
-                    return false;
-                }
-                left++;
-                right--;
-            }
-
-            return true;
-        }
+        
 
         document.getElementById('checkPalindrome').addEventListener('click', () => {
             const input = document.getElementById('palindromeInput').value;
@@ -85,31 +71,7 @@
         });
 
         // Two Sum Solver
-        function twoSum(nums, target) {
-            const map = new Map();
-            const result = [];
-
-            for (let i = 0; i < nums.length; i++) {
-                const complement = target - nums[i];
-
-                if (map.has(complement)) {
-                    const complementIndexes = map.get(complement);
-
-                    complementIndexes.forEach(complementIndex => {
-                        if (complementIndex < i) {
-                            result.push([complementIndex, i]);
-                        }
-                    });
-                }
-
-                if (!map.has(nums[i])) {
-                    map.set(nums[i], []);
-                }
-                map.get(nums[i]).push(i);
-            }
-
-            return result;
-        }
+        
 
         document.getElementById('findTwoSum').addEventListener('click', () => {
             const arrayInput = document.getElementById('arrayInput').value;
@@ -129,7 +91,6 @@
 
             const nums = arrayInput.split(',').map(num => parseInt(num.trim()));
             const result = twoSum(nums, target);
-
             document.getElementById('twoSumResult').textContent = result.length > 0 
                 ? `✅ Pairs: ${JSON.stringify(result)}` 
                 : '❌ No pairs found.';
